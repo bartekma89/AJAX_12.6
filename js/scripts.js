@@ -11,7 +11,7 @@ $(function ($) {
         this.population = obj.population;
         this.area = obj.area;
         this.languages = getAllElements(obj.languages);
-        this.currencies = obj.currencies;
+        this.currencies = getAllElements(obj.currencies);
         this.flag = obj.flag;
         this.$element = create();
 
@@ -30,11 +30,11 @@ $(function ($) {
             fillHeaderData([self.flag, self.name])
             fillSimpleData('Capital', self.capital, $capitalRow);
             fillSimpleData('Population', self.population, $populationRow)
-            fillSimpleData('Area', self.area, $areaRow);
-            
+            fillSimpleData('Area', self.area + " sq km", $areaRow);
+
             fillSimpleData('Language', self.languages, $languageRow);
 
-            fillSimpleData('Currency', self.currencies[0].name, $currencyRow);
+            fillSimpleData('Currency', self.currencies, $currencyRow);
 
             $tableCountry.append($headerRow)
                 .append($capitalRow)
@@ -72,21 +72,21 @@ $(function ($) {
                     .append($nameColumn);
             }
         }
-        
-         function getAllElements(elements) {
-                var arr = []
-                for (var elem in elements) {
-                    var element = elements[elem];
-                    for (var prop in element) {
-                        var oneElement = element[prop];
-                        arr.push(oneElement);
-                    }
+
+        function getAllElements(elements) {
+            var arr = []
+            for (var elem in elements) {
+                var element = elements[elem];
+                for (var prop in element) {
+                    var oneElement = element[prop];
+                    arr.push(oneElement);
                 }
-                var string = "";
-                string = arr.join(', ');
-                
-                return string;
             }
+            var string = "";
+            string = arr.join(', ');
+
+            return string;
+        }
 
     }
 
@@ -120,7 +120,7 @@ $(function ($) {
 
             jqXHR.forEach(function (element) {
                 var countryCard = new CountryInfor(element);
-                countryCard.$element;   
+                countryCard.$element;
             })
 
         }
