@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country searh engine</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
-    <h1>Country search engine</h1>
-    <button id="search">Search country</button>
-    <input type="text" id="country-name">
-    <h2>List of countries</h2>
-    <ul id="countries">
-        <li>no data</li>
-    </ul>
-
+    <div class="jumbotron">
+        <h1>Country search engine</h1>
+        <div id="search-element">
+            <button class="btn btn-info btn-lg" id="search">Search country</button>
+            <input type="text" class="form-control" id="country-name" placeholder="Text input">
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>

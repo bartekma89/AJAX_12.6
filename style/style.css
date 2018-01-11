@@ -1,0 +1,52 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.jumbotron {
+    padding-left: 30px;
+    color: #000;
+    height: 250px;;
+}
+
+#search-element {
+    margin: 0 auto;
+}
+
+.form-control {
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+}
+
+.countryName {
+    line-height: 100px;
+}
+
+.flag {
+    width: 200px;
+    height: 100px;
+    padding: 0;
+}
+
+.table {
+    width: 30%;
+    margin: 20px auto;
+}
+
+table td {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    padding: 2px;
+    width: 300px;
+    margin: 0 auto;
+    font-size: 36px;
+}
