@@ -82,10 +82,7 @@ $(function ($) {
                     arr.push(oneElement);
                 }
             }
-            var string = "";
-            string = arr.join(', ');
-
-            return string;
+            return arr.join(', ');
         }
 
     }
@@ -93,7 +90,8 @@ $(function ($) {
     function searchCountry() {
         var url = "https://restcountries.eu/rest/v2/name/";
         var countryName = $countryName.val();
-
+        clear();
+        
         $.ajax({
                 method: "GET",
                 url: url + countryName
@@ -102,22 +100,23 @@ $(function ($) {
                 countryList(jqXHR)
             })
             .fail(function (jqXHR) {
-                clear();
                 var $error;
 
                 if (!countryName) {
-                    $error = $('<h1 id="error">').text("Field can't be empty");
+                    errorInfo("Field can't be empty");
+                } else {
+                    errorInfo("Country doesn't exist");
+                }
+            
+            function errorInfo(info) {
+                    $error = $('<h1 id="error">').text(info);
                     $('input').after($error)
 
-                } else {
-                    $error = $('<h1 id="error">').text("Country doesn't exist");
-                    $('input').after($error)
-                }
+            }
+            
             });
 
         function countryList(jqXHR) {
-            clear();
-
             jqXHR.forEach(function (element) {
                 var countryCard = new CountryInfor(element);
                 countryCard.$element;
