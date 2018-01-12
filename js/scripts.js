@@ -10,8 +10,8 @@ $(function ($) {
         this.capital = obj.capital;
         this.population = obj.population;
         this.area = obj.area;
-        this.languages = getAllElements(obj.languages);
-        this.currencies = getAllElements(obj.currencies);
+        this.languages = obj.languages;
+        this.currencies = obj.currencies;
         this.flag = obj.flag;
         this.$element = create();
 
@@ -32,9 +32,9 @@ $(function ($) {
             fillSimpleData('Population', self.population, $populationRow)
             fillSimpleData('Area', self.area + " sq km", $areaRow);
 
-            fillSimpleData('Language', self.languages, $languageRow);
+            fillSimpleData('Language', self.languages[0].name, $languageRow);
 
-            fillSimpleData('Currency', self.currencies, $currencyRow);
+            fillSimpleData('Currency', self.currencies[0].name, $currencyRow);
 
             $tableCountry.append($headerRow)
                 .append($capitalRow)
@@ -87,9 +87,8 @@ $(function ($) {
 
     }
 
-    function searchCountry() {
+    function searchCountry(countryName) {
         var url = "https://restcountries.eu/rest/v2/name/";
-        var countryName = $countryName.val();
         clear();
         
         $.ajax({
@@ -111,7 +110,6 @@ $(function ($) {
             function errorInfo(info) {
                     $error = $('<h1 id="error">').text(info);
                     $('input').after($error)
-
             }
             
             });
@@ -130,6 +128,9 @@ $(function ($) {
         }
     }
 
-    $button.click(searchCountry);
+    $button.click(function() {
+        searchCountry($countryName.val())
+        alert(countryNameToURL)
+    });
 
 }(jQuery));
